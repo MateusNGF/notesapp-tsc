@@ -23,7 +23,7 @@ class Note {
   add({ title, body, createAt }: TNote): void {
     const notes = this.load()
 
-    if ((notes.find((note) => note.title === title) ? false : true)) {
+    if (!(notes.find((note) => note.title === title))) {
       notes.push({ title, body, createAt })
       this.save(notes)
     } else {

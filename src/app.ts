@@ -7,6 +7,7 @@ note.setConfig({
   database: './database.json'
 })
 
+// Add
 yargs.command({
   command: 'add',
   describe: "adiciona uma nova nota.",
@@ -36,6 +37,7 @@ yargs.command({
   }
 })
 
+// List
 yargs.command({
   command: 'list',
   describe: "list all notes.",
@@ -44,6 +46,21 @@ yargs.command({
   }
 })
 
+yargs.command({
+  command: 'read',
+  describe: "read a note by title",
+  builder: {
+    title: {
+      describe: "Title of note.",
+      demandOption: true,
+    }
+  },
+  handler: function (args) {
+    console.table(note.find(args.title.toString()))
+  }
+})
+
+// Remove
 yargs.command({
   command: 'remove',
   describe: "remove a note in database.",
