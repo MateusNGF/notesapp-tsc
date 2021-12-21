@@ -14,7 +14,7 @@ type TNote = {
 
 class Note {
 
-  private database: string
+  private database: string | '@/database.json'
 
   setConfig(configDatabase: typesConfigDatabase): void {
     this.database = configDatabase.database
