@@ -7,7 +7,7 @@ note.setConfig({
   database: './database.json'
 })
 
-// Add
+// ADD
 yargs.command({
   command: 'add',
   describe: "adiciona uma nova nota.",
@@ -37,7 +37,7 @@ yargs.command({
   }
 })
 
-// List
+// LIST
 yargs.command({
   command: 'list',
   describe: "list all notes.",
@@ -46,6 +46,7 @@ yargs.command({
   }
 })
 
+// READ 
 yargs.command({
   command: 'read',
   describe: "read a note by title",
@@ -60,7 +61,7 @@ yargs.command({
   }
 })
 
-// Remove
+// REMOVE
 yargs.command({
   command: 'remove',
   describe: "remove a note in database.",
