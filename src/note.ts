@@ -8,7 +8,8 @@ type typesConfigDatabase = {
 
 type TNote = {
   title: string,
-  body: string
+  body: string,
+  createAt: Date
 }
 
 class Note {
@@ -19,15 +20,38 @@ class Note {
     this.database = configDatabase.database
   }
 
-  add({ title, body }: TNote): void {
+  add({ title, body, createAt }: TNote): void {
     const notes = this.load()
 
     if ((notes.find((note) => note.title === title) ? false : true)) {
-      notes.push({ title, body })
+      notes.push({ title, body, createAt })
       this.save(notes)
     } else {
       throw { message: "Note duplicate" }
     }
+  }
+
+  remove(title: string): void {
+    const notes = this.load()
+
+    const new_notes = notes.filter((note) => note.title !== title)
+    console
+    if (notes.length > new_notes.length) {
+      throw { message: "note not has removed." }
+    } else {
+      this.save(new_notes)
+    }
+  }
+
+  find(title: string): TNote {
+    const notes = this.load()
+    const note = notes.find((note) => note.title === title)
+    if (!note) throw { message: "note not found" }
+    return note
+  }
+
+  list(): TNote[] {
+    return this.load()
   }
 
   private load(): TNote[] {
@@ -44,9 +68,7 @@ class Note {
     fs.writeFileSync(this.database, s_notes)
   }
 
-  list(): TNote[] {
-    return this.load()
-  }
+
 }
 
 export const note = new Note()
