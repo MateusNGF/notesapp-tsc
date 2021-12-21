@@ -1,15 +1,10 @@
 import fs from 'fs'
 
+import { TNote } from '@/entities'
 
 type typesConfigDatabase = {
   database: string,
   colletions?: string
-}
-
-type TNote = {
-  title: string,
-  body: string,
-  createAt: Date
 }
 
 class Note {
