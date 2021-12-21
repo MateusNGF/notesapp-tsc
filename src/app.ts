@@ -1,6 +1,4 @@
-import * as fs from 'fs'
 import * as yargs from 'yargs'
-import { demandOption } from 'yargs'
 import { note } from './note'
 
 note.setConfig({
@@ -57,7 +55,11 @@ yargs.command({
     }
   },
   handler: function (args) {
-    console.table(note.find(args.title.toString()))
+    try {
+      console.table(note.find(args.title.toString()))
+    } catch (e) {
+      console.error(e.message)
+    }
   }
 })
 
@@ -75,6 +77,7 @@ yargs.command({
   handler: function (args) {
     try {
       note.remove(args.title.toString())
+      console.log("Removed with sucess.")
     } catch (e) {
       console.error(e.message)
     }

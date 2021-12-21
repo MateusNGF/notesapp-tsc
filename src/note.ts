@@ -30,7 +30,6 @@ class Note {
     const notes = this.load()
 
     const new_notes = notes.filter((note) => note.title !== title)
-    console
     if (notes.length > new_notes.length) {
       throw { message: "note not has removed." }
     } else {
