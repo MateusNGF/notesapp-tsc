@@ -1,9 +1,12 @@
 import * as yargs from 'yargs'
-import { note } from './note'
+import { Note } from './Note'
+import { Repository } from './Repository'
 
-note.setConfig({
+const repo = new Repository()
+repo.setConfig({
   database: './database.json'
 })
+const note = new Note(repo)
 
 // ADD
 yargs.command({

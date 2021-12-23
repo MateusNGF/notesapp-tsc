@@ -1,19 +1,15 @@
 import fs from 'fs'
 
 import { TNote } from '@/entities'
+import { IRepository } from '@/interfaces'
 
-type typesConfigDatabase = {
-  database: string,
-  colletions?: string
-}
+export class Note {
 
-class Note {
+  constructor(
+    private readonly repository: IRepository
+  ) { }
 
-  private database: string | '@/database.json'
-
-  setConfig(configDatabase: typesConfigDatabase): void {
-    this.database = configDatabase.database
-  }
+  private database = this.repository.getDatabase()
 
   add({ title, body, createAt }: TNote): void {
     const notes = this.load()
@@ -64,5 +60,3 @@ class Note {
 
 
 }
-
-export const note = new Note()
