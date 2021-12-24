@@ -15,4 +15,5 @@ export class Repository implements IRepository {
   }
 
 }
+
 export const repository = new Repository()

@@ -3,9 +3,11 @@ import { Note } from './Note'
 import { Repository } from './Repository'
 
 const repo = new Repository()
+
 repo.setConfig({
   database: './database.json'
 })
+
 const note = new Note(repo)
 
 // ADD
