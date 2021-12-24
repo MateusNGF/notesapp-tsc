@@ -27,9 +27,9 @@ export class Note {
 
     const new_notes = notes.filter((note) => note.title !== title)
     if (notes.length > new_notes.length) {
-      throw { message: "note not has removed." }
-    } else {
       this.save(new_notes)
+    } else {
+      throw { message: "note not has removed." }
     }
   }
 
